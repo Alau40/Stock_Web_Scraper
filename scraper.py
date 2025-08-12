@@ -1,22 +1,28 @@
-import feedparser
-import requests
-from bs4 import BeautifulSoup
-import csv
-import time
-import tkinter as tk
+# -----------------------
+# Imports Libraries
+# -----------------------
+
+import feedparser                # Fetches RSS feeds and interprets the XML structure
+import requests                  # Makes HTTP requests to fetch web pages/APIs
+from bs4 import BeautifulSoup    # Parses HTML and XML documents
+import csv                       # Handles CSV file operations
+import time                      # Adds delays to avoid overwhelming the server
+import tkinter as tk             # Manages GUI elements
 from tkinter import messagebox
 
 # -----------------------
 # CONFIGURATION
 # -----------------------
 RSS_FEEDS = {
-    "world": "https://rss.cnn.com/rss/edition_world.rss",
+    "world": "https://www.cnn.com/world",
     "us": "https://rss.cnn.com/rss/edition_us.rss",
     "business": "https://rss.cnn.com/rss/money_news_international.rss",
     "tech": "https://rss.cnn.com/rss/edition_technology.rss"
 }
 
 CSV_FILE = "cnn_articles.csv"
+
+# Sets user-agent to reduce chance of being blocked
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 # -----------------------
